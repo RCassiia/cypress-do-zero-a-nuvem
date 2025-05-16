@@ -6,12 +6,20 @@
  Node.js e do npm, respectivamente. 
 
 ### Instalação
-Execute npm install(ou npm para a versão curta) para instalar as dependências de desenvolvimento.
+Execute `npm install` (ou `npm i` para a versão resumida) para instalar as dependências de desenvolvimento.
 
-#### Testes
+## Testes
 
-O cypress.env.jsonarquivo está incluído .gitignoree você tem certeza de que informações confidenciais não serão versionadas.
+Neste projeto, você pode executar os testes em uma janela de visualização para desktop ou celular.
 
-Execute npm test(ou npm tpara a versão curta) para executar o teste no modo headless.
+### Desktop
 
-Ou execute npm run cy:open para abrir o Cypress no modo interativo.
+Execute `npm test` (ou `npm t` para a versão resumida) para executar o teste em modo headless em uma janela de visualização para desktop.
+
+Ou execute `npm run cy:open` para abrir o aplicativo Cypress em uma janela de visualização para desktop.
+
+### Dispositivos móveis
+
+Execute `npm run test:mobile` para executar o teste em modo headless em uma janela de visualização para dispositivos móveis.
+
+Ou execute `npm run cy:open:mobile` para abrir o aplicativo Cypress em uma janela de visualização para dispositivos móveis.

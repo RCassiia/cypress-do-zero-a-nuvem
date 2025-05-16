@@ -154,6 +154,49 @@ it('marca cada tipo de atendimento "Feedback"',()=>{
         cy.contains('h1', 'CAC TAT - Política de Privacidade').should('be.visible')
       })
 
+      it('avanaçar a apresentação da mensagem de erro em 3000 segundos', ()=>{
+  cy.clock() //você pode "congelar" o relógio do navegador.    
+  const longText = Cypress._.repeat('Obrigada', 10)
+    cy.get('#firstName').type('Rita')
+    cy.get('#lastName').type('Gomes da Costa')
+    cy.get('#email').type('rdcassiagmail.com')
+    cy.get('#open-text-area').type(longText, {delay:0})
+    cy.contains('button', 'Enviar').click()//Uso do contains é uma forma de identificar elementos que não tem um id único para o elemento. Onde é incluído a tag no primeiro argumento e o segundo argumento é o conteúdo
+    
+    cy.get('.error').should('be.visible')
+
+    cy.tick(3000)// avança três mil segundos
+    cy.get('.error').should('not.be.visible')
+  
+  })
+
+  it('exibe e oculta as mensagens de sucesso e erro usando .invoke()', () => {
+  cy.get('.success')
+    .should('not.be.visible')
+    .invoke('show')
+    .should('be.visible')
+    .and('contain', 'Mensagem enviada com sucesso.')
+    .invoke('hide')
+    .should('not.be.visible')
+  cy.get('.error')
+    .should('not.be.visible')
+    .invoke('show')
+    .should('be.visible')
+    .and('contain', 'Valide os campos obrigatórios!')
+    .invoke('hide')
+    .should('not.be.visible')
+})
+it.only('Realizar uma requisição HTTP cy.request()', ()=>{
+  cy.request('https://cac-tat-v3.s3.eu-central-1.amazonaws.com/index.html')
+    .as('getRequest')
+    .its('status')
+    .should('be.equal', 200)
+   cy.get('@getRequest') 
+    .its('statusText')
+    .should('be.equal', 'OK')
+
+})
+
 })
   
 
