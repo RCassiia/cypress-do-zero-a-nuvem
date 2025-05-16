@@ -186,7 +186,7 @@ it('marca cada tipo de atendimento "Feedback"',()=>{
     .invoke('hide')
     .should('not.be.visible')
 })
-it.only('Realizar uma requisição HTTP cy.request()', ()=>{
+it('Realizar uma requisição HTTP cy.request()', ()=>{
   cy.request('https://cac-tat-v3.s3.eu-central-1.amazonaws.com/index.html')
     .as('getRequest')
     .its('status')
